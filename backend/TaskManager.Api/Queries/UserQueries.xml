@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<queries>
+	<query name="GetAllUsers">
+		SELECT Id, Name, Email, CreatedDate FROM Users
+	</query>
+<query name="GetUserById">
+    SELECT Id, Name , Email, CreatedDate from Users WHERE Id  = @UserId
+</query>
+<query name="CreateUser">
+     INSERT INTO Users(Name, Email) VALUES (@Name, @Email)
+     SELECT CAST(SCOPE_IDENTITY() AS INT);
+</query>
+</queries>
