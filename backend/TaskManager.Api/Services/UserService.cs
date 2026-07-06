@@ -19,7 +19,7 @@ namespace TaskManager.Api.Services
         {
             if (string.IsNullOrWhiteSpace(user.Name) || string.IsNullOrWhiteSpace(user.Email))
             {
-                throw new ArgumentException("Name and MEail ar requird");
+                throw new ArgumentException("Name and Email are requird");
 
             }
             return _repository.CreateUser(user);

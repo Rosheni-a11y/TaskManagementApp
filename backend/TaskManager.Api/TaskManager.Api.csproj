@@ -15,6 +15,10 @@
   <None Update="Queries\UserQueries.xml">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
   </None>
+
+<None Update="Queries\TaskQueries.xml">
+	<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+</None>
 </ItemGroup>
 
 </Project>

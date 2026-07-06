@@ -8,6 +8,9 @@ builder.Services.AddOpenApi();
 builder.Services.AddScoped<TaskManager.Api.Repositories.UserRepository>();
 builder.Services.AddScoped<TaskManager.Api.Services.UserService>();
 
+builder.Services.AddScoped<TaskManager.Api.Repositories.TaskRepository>();
+builder.Services.AddScoped<TaskManager.Api.Services.TaskService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline

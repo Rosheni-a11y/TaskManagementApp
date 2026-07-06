@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+	
+<queries>
+	<query name="GetTasksByUserId">
+		SELECT Id, Title , Description, Status, UserId, CreatedDate , DueDate
+		FROM Tasks WHERE UserId = @UserId
+	</query>
+	
+	<query name="CreateTask">
+		 INSERT INTO Tasks (Title, Description, Status, UserId, DueDate) 
+        VALUES (@Title, @Description, @Status, @UserId, @DueDate);
+        SELECT CAST(SCOPE_IDENTITY() AS INT);
+    </query>
+    <query name="UpdateTaskStatus">
+        UPDATE Tasks SET Status = @Status WHERE Id = @TaskId
+    </query>
+    <query name="DeleteTask">
+        DELETE FROM Tasks WHERE Id = @TaskId
+    </query>
+		
+</queries>
