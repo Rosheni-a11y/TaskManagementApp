@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskManager.Api.Models;
 using TaskManager.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TaskManager.Api.Controllers
 {
@@ -24,6 +25,7 @@ namespace TaskManager.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult CreateTask([FromBody] TaskItem task)
         {
             var newId = _service.CreateTask(task);
@@ -31,6 +33,7 @@ namespace TaskManager.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult UpdateTaskStatus(int id, [FromBody] string newStatus)
         {
             _service.UpdateTaskStatus(id, newStatus);
@@ -38,6 +41,7 @@ namespace TaskManager.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult DeleteTask(int id)
         {
             _service.DeleteTask(id);

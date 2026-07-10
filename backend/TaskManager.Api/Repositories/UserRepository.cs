@@ -36,7 +36,7 @@ namespace TaskManager.Api.Repositories
         }
 
 
-            public List<User> GetAllUsers()
+        public List<User> GetAllUsers()
         {
             var users = new List<User>();
 
@@ -62,6 +62,7 @@ namespace TaskManager.Api.Repositories
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 Name = reader.GetString(reader.GetOrdinal("Name")),
                 Email = reader.GetString(reader.GetOrdinal("Email")),
+                Password = reader.GetString(reader.GetOrdinal("Password")),
                 CreatedDate = reader.GetDateTime(reader.GetOrdinal("CreatedDate"))
             };
         }
@@ -82,9 +83,36 @@ namespace TaskManager.Api.Repositories
         }
 
 
+        public User? GetUserByEmail(string email)
+        {
+            User? user = null;
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                using (var command = new SqlCommand(_queries["GetUserByEmail"], connection))
+
+                {
+                    command.Parameters.AddWithValue("@Email", email);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            user = MapReaderToUser(reader);
+                        }
+                    }
+                }
+
+            }
+
+            return user;
 
 
 
+
+
+        }
     }
-    
 }
+    

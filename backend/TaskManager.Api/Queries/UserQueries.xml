@@ -11,4 +11,8 @@
      INSERT INTO Users(Name, Email) VALUES (@Name, @Email)
      SELECT CAST(SCOPE_IDENTITY() AS INT);
 </query>
+
+<query name="GetUserByEmail">
+	SELECT Id, Name, Email, Password, CreatedDate FROM Users WHERE Email = @Email
+</query>
 </queries>
