@@ -57,15 +57,25 @@ namespace TaskManager.Api.Repositories
 
         private User MapReaderToUser(SqlDataReader reader)
         {
-            return new User
+            var user =  new User
             {
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 Name = reader.GetString(reader.GetOrdinal("Name")),
                 Email = reader.GetString(reader.GetOrdinal("Email")),
-                Password = reader.GetString(reader.GetOrdinal("Password")),
                 CreatedDate = reader.GetDateTime(reader.GetOrdinal("CreatedDate"))
             };
+
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                if (reader.GetName(i) == "Password")
+                {
+                    user.Password = reader.GetString(i);
+                    break;
+                }
+            }
+            return user;
         }
+        
 
         public int CreateUser(User user)
         {
