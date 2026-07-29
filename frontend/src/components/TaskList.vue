@@ -2,9 +2,7 @@
     <div class="rounded-2xl p-5 glass-card">
 
     <div class="flex items-center justify-between mb-3">
-        <h2 class="text-lg font-semibold text-brand">
-            Tasks
-        </h2>
+       <h2 class="text-xl font-bold mb-3 text-brand" style="text-shadow: 0 1px 2px rgba(255,255,255,0.4);">Tasks</h2>
 
         <router-link
             to="/add-task"

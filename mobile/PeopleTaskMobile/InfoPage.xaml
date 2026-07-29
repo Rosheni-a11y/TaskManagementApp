@@ -2,17 +2,51 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PeopleTaskMobile.InfoPage"
-             Title="About">
+             Title="About"
+             BackgroundColor="#F8F3E1"
+             Shell.NavBarIsVisible="False">
 
     <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
-        <Label Text="Task Management Mobile App" 
-               FontSize="24" 
+
+        <Grid WidthRequest="90" HeightRequest="90" HorizontalOptions="Center">
+            <Ellipse Fill="#E3DBBB" WidthRequest="90" HeightRequest="90" />
+            <Ellipse Fill="#AEB784" WidthRequest="66" HeightRequest="66"
+                     HorizontalOptions="Center" VerticalOptions="Center" />
+            <Path Data="M 25,40 L 36,51 L 58,25"
+                  Stroke="#41431B"
+                  StrokeThickness="7"
+                  StrokeLineCap="Round"
+                  StrokeLineJoin="Round"
+                  WidthRequest="34"
+                  HeightRequest="34"
+                  Aspect="Uniform"
+                  HorizontalOptions="Center"
+                  VerticalOptions="Center" />
+        </Grid>
+
+        <Label Text="NexTick"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#41431B"
                HorizontalOptions="Center" />
-        <Label Text="Built with .NET MAUI + Vue.js" 
-               FontSize="16" 
+
+        <Label Text="Task Management Mobile App"
+               FontSize="18"
+               TextColor="#41431B"
                HorizontalOptions="Center" />
-        <Button Text="Back to Tasks" 
-                Clicked="OnBackToTasksClicked" />
+
+        <Label Text="Built with .NET MAUI + Vue.js"
+               FontSize="14"
+               TextColor="#7A7A55"
+               HorizontalOptions="Center" />
+
+        <Button Text="Back to Tasks"
+                Clicked="OnBackToTasksClicked"
+                BackgroundColor="#AEB784"
+                TextColor="#41431B"
+                CornerRadius="10"
+                Margin="0,20,0,0" />
+
     </VerticalStackLayout>
 
 </ContentPage>

@@ -1,6 +1,6 @@
 <template>
     <div class="rounded-2xl p-5 mb-4 glass-card">
-        <label for="user-select" class="block text-sm font-medium mb-1 text-brand">Select User</label>
+        <label for="user-select" class="block text-lg font-bold mb-2 text-brand">Select User</label>
         <select id="user-select" v-model="selectedUserId" @change="onUserChange"
             class="w-full px-3 py-2 rounded-lg glass-input text-brand">
             <option value="">-- Select a user --</option>
