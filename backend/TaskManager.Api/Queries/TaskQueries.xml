@@ -6,6 +6,7 @@
 		FROM Tasks WHERE UserId = @UserId
 	</query>
 
+
 	<query name="CreateTask">
 		INSERT INTO Tasks (Title, Description, Status, UserId, DueDate)
 		VALUES (@Title, @Description, @Status, @UserId, @DueDate);
@@ -18,5 +19,6 @@
 	<query name="DeleteTask">
 		DELETE FROM Tasks WHERE Id = @TaskId
 	</query>
+
 
 </queries>

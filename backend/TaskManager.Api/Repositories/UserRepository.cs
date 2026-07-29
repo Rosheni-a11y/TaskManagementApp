@@ -57,7 +57,9 @@ namespace TaskManager.Api.Repositories
 
         private User MapReaderToUser(SqlDataReader reader)
         {
+
             var user = new User
+
             {
                 Id = reader.GetInt32(reader.GetOrdinal("Id")),
                 Name = reader.GetString(reader.GetOrdinal("Name")),
@@ -86,7 +88,9 @@ namespace TaskManager.Api.Repositories
                 {
                     command.Parameters.AddWithValue("@Name", user.Name);
                     command.Parameters.AddWithValue("@Email", user.Email);
+
                     command.Parameters.AddWithValue("@Password", user.Password);
+
                     var newId = (int)command.ExecuteScalar();
                     return newId;
                 }
@@ -118,6 +122,7 @@ namespace TaskManager.Api.Repositories
             }
 
             return user;
+
         }
 
         public bool UpdatePassword(string email, string newPassword)
@@ -136,3 +141,4 @@ namespace TaskManager.Api.Repositories
         }
     }
 }
+

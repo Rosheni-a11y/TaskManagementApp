@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using TaskManager.Api.Services;
 using LoginRequest = TaskManager.Api.Models.LoginRequest;
 using ResetPasswordRequest = TaskManager.Api.Models.ResetPasswordRequest;
+
 
 namespace TaskManager.Api.Controllers
 {
@@ -30,6 +32,7 @@ namespace TaskManager.Api.Controllers
 
         }
 
+
         [HttpPost("reset-password")]
         public IActionResult ResetPassword([FromBody] ResetPasswordRequest request)
         {
@@ -45,3 +48,4 @@ namespace TaskManager.Api.Controllers
 
     }
 }
+

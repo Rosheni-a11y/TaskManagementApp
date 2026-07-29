@@ -40,8 +40,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowVueFrontend", policy =>
     {
+
         policy.WithOrigins("http://localhost:5173", "http://10.255.198.215:5173")
                .AllowAnyHeader()
+
               .AllowAnyMethod();
     });
 });

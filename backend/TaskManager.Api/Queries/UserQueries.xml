@@ -4,6 +4,7 @@
 	<query name="GetAllUsers">
 		SELECT Id, Name, Email, CreatedDate FROM Users
 	</query>
+
 	<query name="GetUserById">
 		SELECT Id, Name , Email, CreatedDate from Users WHERE Id  = @UserId
 	</query>
@@ -19,4 +20,5 @@
 	<query name="UpdatePassword">
 		UPDATE Users SET Password = @NewPassword WHERE Email = @Email
 	</query>
+
 </queries>

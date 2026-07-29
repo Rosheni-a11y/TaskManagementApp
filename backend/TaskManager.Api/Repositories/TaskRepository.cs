@@ -108,16 +108,18 @@ namespace TaskManager.Api.Repositories
         }
 
 
-       
 
 
 
 
         public void UpdateTask(TaskItem task)
+
+
         {
             using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
+
                 using (var command = new SqlCommand(_queries["UpdateTask"], connection))
                 {
                     command.Parameters.AddWithValue("@TaskId", task.Id);
@@ -127,6 +129,7 @@ namespace TaskManager.Api.Repositories
                     command.Parameters.AddWithValue("@DueDate", task.DueDate ?? (object)DBNull.Value);
 
                     command.ExecuteNonQuery();
+
                 }
             }
         }

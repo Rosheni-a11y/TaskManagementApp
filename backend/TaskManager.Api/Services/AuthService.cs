@@ -29,6 +29,7 @@ namespace TaskManager.Api.Services
             return GenerateToken(user.Id, user.Email);
         }
 
+
         public bool ResetPassword(string email, string newPassword)
         {
             return _userRepository.UpdatePassword(email, newPassword);
@@ -55,7 +56,6 @@ namespace TaskManager.Api.Services
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
 
     }
 }
