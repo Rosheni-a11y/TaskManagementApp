@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PeopleTaskMobile.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>

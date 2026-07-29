@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PeopleTaskMobile.MainPage">
+
+    <Grid RowDefinitions="Auto,*" BackgroundColor="#F8F3E1">
+
+        <Grid Grid.Row="0" ColumnDefinitions="Auto,*,Auto" Padding="16,14" BackgroundColor="#41431B">
+
+            <Grid Grid.Column="0" WidthRequest="40" HeightRequest="40">
+                <Ellipse Fill="#E3DBBB" WidthRequest="40" HeightRequest="40" />
+                <Ellipse Fill="#AEB784" WidthRequest="30" HeightRequest="30"
+                         HorizontalOptions="Center" VerticalOptions="Center" />
+                <Path Data="M 20,32 L 34,46 L 62,14"
+                      Stroke="#41431B"
+                      StrokeThickness="5"
+                      StrokeLineCap="Round"
+                      StrokeLineJoin="Round"
+                      WidthRequest="16"
+                      HeightRequest="16"
+                      Aspect="Uniform"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center" />
+            </Grid>
+
+            <Label Grid.Column="1"
+                   Text="NexTick"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#F8F3E1"
+                   VerticalOptions="Center"
+                   Margin="10,0,0,0" />
+
+            <Button Grid.Column="2"
+                    Text="ⓘ"
+                    FontSize="20"
+                    TextColor="#F8F3E1"
+                    BackgroundColor="Transparent"
+                    WidthRequest="40"
+                    HeightRequest="40"
+                    Padding="0"
+                    Clicked="OnAboutClicked" />
+
+        </Grid>
+
+        <WebView Grid.Row="1"
+                 x:Name="webView"
+                 Source="http://localhost:5173" />
+    </Grid>
+
+</ContentPage>

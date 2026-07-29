@@ -1,0 +1,160 @@
+{
+  "info": {
+    "_postman_id": "5cc8f979-6373-4bc3-a55b-3e1d8a00e8cb",
+    "name": "TaskManagementApp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "42384567",
+    "_collection_link": "https://go.postman.co/collection/42384567-5cc8f979-6373-4bc3-a55b-3e1d8a00e8cb?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users - Get All",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Users - Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Test User\",\r\n  \"email\": \"testuser@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7158/api/users",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7158",
+          "path": [
+            "api",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tasks - Get By User",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Auth-Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"rosheni@gmail.com\",\r\n  \"password\": \"12345\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7158/api/auth/login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7158",
+          "path": [
+            "api",
+            "auth",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Testing without token",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Unauthorized test\",\r\n  \"status\": \"Pending\",\r\n  \"userId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7158/api/tasks",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7158",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tasks - Create (Protected)",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Authorized test\",\r\n  \"status\": \"Pending\",\r\n  \"userId\": 1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7158/api/tasks",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7158",
+          "path": [
+            "api",
+            "tasks"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Tasks - Update Status (Protected)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "Tasks - Delete (Protected)",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

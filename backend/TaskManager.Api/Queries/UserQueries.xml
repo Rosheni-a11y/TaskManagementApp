@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+
+<queries>
+	<query name="GetAllUsers">
+		SELECT Id, Name, Email, CreatedDate FROM Users
+	</query>
+	<query name="GetUserById">
+		SELECT Id, Name , Email, CreatedDate from Users WHERE Id  = @UserId
+	</query>
+	<query name="CreateUser">
+		INSERT INTO Users(Name, Email, Password) VALUES (@Name, @Email, @Password)
+		SELECT CAST(SCOPE_IDENTITY() AS INT);
+	</query>
+
+	<query name="GetUserByEmail">
+		SELECT Id, Name, Email, Password, CreatedDate FROM Users WHERE Email = @Email
+	</query>
+
+	<query name="UpdatePassword">
+		UPDATE Users SET Password = @NewPassword WHERE Email = @Email
+	</query>
+</queries>

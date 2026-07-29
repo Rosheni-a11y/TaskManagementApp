@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+:root {
+    --color-dark: #41431B;
+    --color-sage: #AEB784;
+    --color-tan: #E3DBBB;
+    --color-cream: #F8F3E1;
+}
+
+.app-gradient-bg {
+    background: linear-gradient(135deg, var(--color-sage) 0%, var(--color-tan) 50%, var(--color-cream) 100%);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px rgba(65, 67, 27, 0.25);
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--color-sage);
+}
+
+.text-brand {
+    color: var(--color-dark);
+}
+
+.btn-brand {
+    background-color: var(--color-sage);
+    color: var(--color-dark);
+}
