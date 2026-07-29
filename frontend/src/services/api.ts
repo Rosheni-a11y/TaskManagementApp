@@ -78,3 +78,21 @@ export async function resetPassword(email: string, newPassword: string) {
     });
     return response.json();
 }
+
+export async function getAllTasks() {
+    const token = localStorage.getItem('authToken');
+
+    const response = await fetch(`${API_BASE_URL}/tasks`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to retrieve tasks');
+    }
+
+    return await response.json();
+}

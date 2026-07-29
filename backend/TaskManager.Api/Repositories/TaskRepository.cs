@@ -35,6 +35,28 @@ namespace TaskManager.Api.Repositories
             return result;
         }
 
+        public List<TaskItem> GetAllTasks()
+        {
+            var tasks = new List<TaskItem>();
+
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                using (var command = new SqlCommand(_queries["GetAllTasks"], connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            tasks.Add(MapReaderToTask(reader));
+                        }
+                    }
+                }
+            }
+
+            return tasks;
+        }
 
         public List<TaskItem> GetTasksByUserId(int userId)
         {

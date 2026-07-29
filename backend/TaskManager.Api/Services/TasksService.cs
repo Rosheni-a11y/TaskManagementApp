@@ -13,6 +13,12 @@ namespace TaskManager.Api.Services
             _repository = repository;
         }
 
+
+        public List<TaskItem> GetAllTasks()
+        {
+            return _repository.GetAllTasks();
+        }
+
         public List<TaskItem> GetTasksByUserId(int userId)
 
         {

@@ -17,6 +17,13 @@ namespace TaskManager.Api.Controllers
             _service = service;
         }
 
+        [HttpGet]
+        public IActionResult GetAllTasks()
+        {
+            var tasks = _service.GetAllTasks();
+            return Ok(tasks);
+        }
+
         [HttpGet("{userId}")]
         public IActionResult GetTasksByUserId(int userId)
         {
@@ -49,5 +56,7 @@ namespace TaskManager.Api.Controllers
             _service.DeleteTask(id);
             return Ok();
         }
+
+        
     }
 }

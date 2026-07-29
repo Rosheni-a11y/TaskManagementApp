@@ -1,7 +1,20 @@
 <template>
     <div class="rounded-2xl p-5 glass-card">
-        <h2 class="text-lg font-semibold mb-3 text-brand">Tasks</h2>
-        <div class="flex flex-row gap-3 mb-4">
+
+    <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-semibold text-brand">
+            Tasks
+        </h2>
+
+        <router-link
+            to="/add-task"
+            class="inline-flex items-center px-3 py-1.5 rounded-lg text-sm font-medium btn-brand"
+        >
+            + Add Task
+        </router-link>
+    </div>
+
+    <div class="flex flex-row gap-3 mb-4">
             <input type="text" :value="searchQuery" @input="searchQuery = $event.target.value"
                 placeholder="Search tasks..."
                 class="flex-[2] min-w-0 px-3 py-2 rounded-lg glass-input" />
@@ -39,48 +52,90 @@
         <p v-if="tasks.length === 0" class="text-sm text-center py-4" style="color: #41431B; opacity: 0.6;">No tasks yet</p>
         <p v-else-if="filteredTasks.length === 0" class="text-sm text-center py-4" style="color: #41431B; opacity: 0.6;">No tasks match your search</p>
 
-        <!-- Edit Modal -->
-        <div v-if="editingTask" class="fixed inset-0 z-40 flex items-center justify-center px-4"
-            style="background: rgba(65, 67, 27, 0.4);" @click.self="closeEditModal">
-            <div class="w-full max-w-sm rounded-2xl p-6 glass-card" style="background: rgba(248, 243, 225, 0.95); backdrop-filter: blur(24px);">
-                <h3 class="text-lg font-semibold mb-4 text-brand">Edit Task</h3>
-                <form @submit.prevent="handleSaveEdit" class="space-y-3">
-                    <div>
-                        <label class="block text-sm font-medium mb-1 text-brand">Title</label>
-                        <input type="text" v-model="editForm.title" required
-                            class="w-full px-3 py-2 rounded-lg glass-input" />
+              <!-- Edit Modal -->
+        <Teleport to="body">
+            <div
+                v-if="editingTask"
+                class="fixed inset-0 z-[9999] flex items-center justify-center px-6 py-10"
+                style="background-color: #f4f1de;"
+            >
+                <div class="w-full max-w-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-brand text-center">
+                        Edit Task
+                    </h3>
+
+                    <div class="rounded-2xl p-6 glass-card">
+                        <form @submit.prevent="handleSaveEdit" class="space-y-3">
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-brand">
+                                    Title
+                                </label>
+                                <input
+                                    type="text"
+                                    v-model="editForm.title"
+                                    required
+                                    class="w-full px-3 py-2 rounded-lg glass-input"
+                                />
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-brand">
+                                    Description
+                                </label>
+                                <input
+                                    type="text"
+                                    v-model="editForm.description"
+                                    class="w-full px-3 py-2 rounded-lg glass-input"
+                                />
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-brand">
+                                    Due Date
+                                </label>
+                                <input
+                                    type="date"
+                                    v-model="editForm.dueDate"
+                                    class="w-full px-3 py-2 rounded-lg glass-input text-brand"
+                                />
+                            </div>
+
+                            <div>
+                                <label class="block text-sm font-medium mb-1 text-brand">
+                                    Status
+                                </label>
+                                <select
+                                    v-model="editForm.status"
+                                    class="w-full px-3 py-2 rounded-lg glass-input text-brand"
+                                >
+                                    <option value="Pending">Pending</option>
+                                    <option value="In Progress">In Progress</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </div>
+
+                            <div class="flex gap-3 pt-4">
+                                <button
+                                    type="button"
+                                    @click="closeEditModal"
+                                    class="flex-1 py-2 rounded-lg font-medium text-brand"
+                                    style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5);"
+                                >
+                                    Cancel
+                                </button>
+
+                                <button
+                                    type="submit"
+                                    class="flex-1 py-2 rounded-lg font-medium btn-brand"
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1 text-brand">Description</label>
-                        <input type="text" v-model="editForm.description"
-                            class="w-full px-3 py-2 rounded-lg glass-input" />
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1 text-brand">Due Date</label>
-                        <input type="date" v-model="editForm.dueDate"
-                            class="w-full px-3 py-2 rounded-lg glass-input text-brand" />
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-1 text-brand">Status</label>
-                        <select v-model="editForm.status" class="w-full px-3 py-2 rounded-lg glass-input text-brand">
-                            <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Completed">Completed</option>
-                        </select>
-                    </div>
-                    <div class="flex gap-3 mt-4">
-                        <button type="button" @click="closeEditModal"
-                            class="flex-1 py-2 rounded-lg font-medium text-brand"
-                            style="background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.5);">
-                            Cancel
-                        </button>
-                        <button type="submit" class="flex-1 py-2 rounded-lg font-medium btn-brand">
-                            Save
-                        </button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
+        </Teleport>
     </div>
 </template>
 
@@ -160,9 +215,11 @@
                     dueDate: task.dueDate ? task.dueDate.split('T')[0] : '',
                     status: task.status
                 };
+                document.body.style.overflow = 'hidden';
             },
             closeEditModal() {
                 this.editingTask = null;
+                document.body.style.overflow = '';
             },
             async handleSaveEdit() {
                 const token = localStorage.getItem('authToken');

@@ -37,3 +37,8 @@
     background-color: var(--color-sage);
     color: var(--color-dark);
 }
+
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+    display: none;
+}
