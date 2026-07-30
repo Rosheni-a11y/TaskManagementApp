@@ -2,6 +2,15 @@
 
 A full-stack task management application built as part of the mobile team internship assignment. It includes a .NET Web API backend, a Vue.js frontend, and a .NET MAUI mobile app that loads the frontend via WebView.
 
+<img width="1440" height="3120" alt="image" src="https://github.com/user-attachments/assets/86d910fc-c39c-4cf6-8cce-32e8b23fb5e1" />
+
+<img width="1440" height="3120" alt="image" src="https://github.com/user-attachments/assets/387aba7c-5b01-4e96-ba43-f1184463d99a" 
+
+<img width="1440" height="3120" alt="image" src="https://github.com/user-attachments/assets/a61caccc-4fc7-470a-8339-7d99f179eb34" />
+
+
+
+
 ## Tech Stack
 
 **Backend**
